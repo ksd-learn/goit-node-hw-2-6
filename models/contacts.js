@@ -12,7 +12,7 @@ const listContacts = async () => {
   }
  };
 
-const getContactById = async (contactId) => {
+const getById = async (contactId) => {
   try {
     const contacts = JSON.parse(await fs.readFile(FILE_PATH, 'utf8'));
     const contactById = contacts.filter(item => item.id === contactId);
@@ -70,7 +70,7 @@ const updateContact = async (contactId, body) => {
 
 module.exports = {
   listContacts,
-  getContactById,
+  getById,
   removeContact,
   addContact,
   updateContact,
