@@ -1,14 +1,9 @@
-const contacts = require("../../models/contacts");
-const { nanoid } = require("nanoid");
+const { Contacts } = require('../../models/contacts');
 
 const addContact = async(req, res, next)=> {
   try {
     const data = req.body;
-    const newContact = {
-      id: nanoid(),
-      ...data,
-    };
-    result = await contacts.addContact(newContact);
+    const result = await Contacts.create(data);
     res.status(201).json(result)
   } catch(error) {
     next()
