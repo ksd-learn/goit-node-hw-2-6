@@ -8,19 +8,20 @@ const updateStatusContact = require('../../controllers/contacts/updateStatusCont
 const validateBodyUpd = require("../../middlewares/validateBodyUpd");
 const validateBodyAdd = require("../../middlewares/validateBodyAdd");
 const validateBodyUpdStatusContact = require("../../middlewares/validateBodyUpdStatusContact");
+const validateAuthorization = require("../../middlewares/users/validateAuthorization");
 
 const router = express.Router();
 
-router.get('/', get);
+router.get('/', validateAuthorization, get);
 
-router.get('/:id', getById);
+router.get('/:id', validateAuthorization, getById);
 
-router.post('/', validateBodyAdd, addContact);
+router.post('/', validateAuthorization, validateBodyAdd, addContact);
 
-router.delete('/:id', removeContact);
+router.delete('/:id', validateAuthorization, removeContact);
 
-router.put('/:id', validateBodyUpd, updateContact);
+router.put('/:id', validateAuthorization, validateBodyUpd, updateContact);
 
-router.patch('/:id/favorite', validateBodyUpdStatusContact, updateStatusContact);
+router.patch('/:id/favorite', validateAuthorization, validateBodyUpdStatusContact, updateStatusContact);
 
 module.exports = router
