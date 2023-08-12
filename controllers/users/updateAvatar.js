@@ -1,6 +1,5 @@
 const fs = require("fs/promises");
 const path = require("path");
-
 const { Users } = require("../../models/users");
 
 const avatarsDir = path.join(__dirname, "../../", "public", "avatars");
